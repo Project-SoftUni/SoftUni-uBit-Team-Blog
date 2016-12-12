@@ -22,16 +22,17 @@
                 </button>
                 <!--име търсене регистрация влизане-->
                 @Html.ActionLink("HOME", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                <form class="form-wrapper">
+              
                     
-                    <form action="advsearcher.php" method="get">
-                        Search this website:<input align="right" type="text" name="search" />
-                        <input type="submit" value="Search" />
+                    <!----- Google search bar--->
+                    <form method="get" action="http://www.google.com/search" align="center">
+                        <div style="text-align: left;">
+                            <input type="text" name="q" placeholder="search Google" />
+                            <input type="submit" value="Search" />
+                        </div>
                     </form>
-
                     
-                </form>
-
+           
              
            
                 
