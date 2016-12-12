@@ -21,7 +21,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <!--име търсене регистрация влизане-->
-                @Html.ActionLink("C#-blog", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("HOME", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
                 <form class="form-wrapper">
                     
                     <form action="advsearcher.php" method="get">
@@ -37,8 +37,15 @@
                 
             </div>
             <div class="navbar-collapse collapse">
-                @Html.Partial("_LoginPartial")
-            </div>
+
+                <ul class="nav navbar-nav">
+                    <li>
+                        <img src="@Url.Action("UserPhotos", "Home" )" height="48" width="48" />
+                    </li>
+                <</ul>
+
+                    @Html.Partial("_LoginPartial")
+</div>
         </div>
     </div>
     <div class="container body-content">

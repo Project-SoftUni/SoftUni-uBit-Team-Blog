@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Blog.Models;
+using System.IO;
 
 namespace Blog.Controllers
 {
@@ -151,10 +152,27 @@ namespace Blog.Controllers
         {
             if (ModelState.IsValid)
             {
+                //save the uploaded image to the byte array and use this byte array result to be saved in our users table.
+                byte[] imageData = null;
+                if (Request.Files.Count > 0)
+                {
+                    HttpPostedFileBase poImgFile = Request.Files["UserPhoto"];
+
+                    using (var binary = new BinaryReader(poImgFile.InputStream))
+                    {
+                        imageData = binary.ReadBytes(poImgFile.ContentLength);
+                    }
+                }
+
                 var user = new ApplicationUser { UserName = model.Email, FullName = model.FullName, Email = model.Email };
+
+                user.UserPhoto = imageData;
+
                 var result = await UserManager.CreateAsync(user, model.Password);
 
                 var addRoleResult = UserManager.AddToRole(user.Id, "User");
+
+
 
                 if (result.Succeeded)
                 {
