@@ -1,11 +1,15 @@
 ﻿<!DOCTYPE html>
+<!--ГЛАВНА СТРАНИЦА--->
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+                @Scripts.Render("~/bundles/modernizr")
+                <script src="~/Views/Shared/search.css/script.js"></script>
+            <link href="~/Views/Shared/search.css/search.css" rel="stylesheet" />
+      
 </head>
 <body>
     <div class="navbar navbar-default navbar-fixed-top">
@@ -16,7 +20,21 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("SOFTUNI BLOG", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <!--име търсене регистрация влизане-->
+                @Html.ActionLink("C#-blog", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <form class="form-wrapper">
+                    
+                    <form action="advsearcher.php" method="get">
+                        Search this website:<input align="right" type="text" name="search" />
+                        <input type="submit" value="Search" />
+                    </form>
+
+                    
+                </form>
+
+             
+           
+                
             </div>
             <div class="navbar-collapse collapse">
                 @Html.Partial("_LoginPartial")
