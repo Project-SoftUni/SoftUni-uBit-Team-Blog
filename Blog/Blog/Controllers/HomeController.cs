@@ -56,7 +56,7 @@ namespace Blog.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
-                String userId = User.Identity.GetUserId();
+                string userId = User.Identity.GetUserId();
 
                 if (userId == null)
                 {

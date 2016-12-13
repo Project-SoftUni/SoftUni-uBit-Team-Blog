@@ -156,7 +156,7 @@ namespace Blog.Controllers
                 byte[] imageData = null;
                 if (Request.Files.Count > 0)
                 {
-                    HttpPostedFileBase poImgFile = Request.Files["UserPhoto"];
+                    HttpPostedFileBase poImgFile = Request.Files["User Photo"];
 
                     using (var binary = new BinaryReader(poImgFile.InputStream))
                     {
