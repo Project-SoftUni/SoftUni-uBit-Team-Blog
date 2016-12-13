@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
-                @Scripts.Render("~/bundles/modernizr")
-                <script src="~/Views/Shared/search.css/script.js"></script>
-            <link href="~/Views/Shared/search.css/search.css" rel="stylesheet" />
-      
+    @Scripts.Render("~/bundles/modernizr")
+    <script src="~/Views/Shared/search.css/script.js"></script>
+    <link href="~/Views/Shared/search.css/search.css" rel="stylesheet" />
+
 </head>
 <body>
     <div class="navbar navbar-default navbar-fixed-top">
@@ -22,31 +22,21 @@
                 </button>
                 <!--име търсене регистрация влизане-->
                 @Html.ActionLink("HOME", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-              
-                    
-                    <!----- Google search bar--->
-                    <form method="get" action="http://www.google.com/search" align="center">
-                        <div style="text-align: left;">
-                            <input type="text" name="q" placeholder="search Google" />
-                            <input type="submit" value="Search" />
-                        </div>
-                    </form>
-                    
-           
-             
-           
-                
+
+
+                <!----- Google search bar--->
+                <form method="get" action="http://www.google.com/search" align="center">
+                    <div style="text-align: left;">
+                        <input type="text" name="q" placeholder="search Google" />
+                        <input type="submit" value="Search" />
+                    </div>
+                </form>
+
             </div>
             <div class="navbar-collapse collapse">
-
-                <ul class="nav navbar-nav">
-                    <li>
-                        <img src="@Url.Action("UserPhotos", "Home" )" height="48" width="48" />
-                    </li>
-                <</ul>
-
-                    @Html.Partial("_LoginPartial")
-</div>
+                @Html.Partial("_LoginPartial")
+            </div>               
+            </div>
         </div>
     </div>
     <div class="container body-content">
