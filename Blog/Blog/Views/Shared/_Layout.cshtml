@@ -1,10 +1,11 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <!--ГЛАВНА СТРАНИЦА--->
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - uBit Team Blog</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <script src="~/Views/Shared/search.css/script.js"></script>
@@ -23,26 +24,25 @@
                 <!--име търсене регистрация влизане-->
                 @Html.ActionLink("HOME", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
 
-
-                <!----- Google search bar--->
-                <form method="get" action="http://www.google.com/search" align="center">
-                    <div style="text-align: left;">
-                        <input type="text" name="q" placeholder="search Google" />
+                <div class="nav navbar-right" style="margin-top: 17px">
+                    <form action="~/search.aspx" method="GET">
+                        <input type="text" name="SearchTerm" />
                         <input type="submit" value="Search" />
-                    </div>
-                </form>
+                        <Search:ExpressIntegrator runat=server />
+                    </form>
+                </div>
 
             </div>
             <div class="navbar-collapse collapse">
                 @Html.Partial("_LoginPartial")
-            </div>               
             </div>
         </div>
+    </div>
     </div>
     <div class="container body-content">
         @RenderBody()
         <footer class="pull-right">
-            <p>&copy; @DateTime.Now.Year - SoftUni Blog</p>
+            <p>&copy; @DateTime.Now.Year - uBit Team Blog</p>
         </footer>
     </div>
 
