@@ -18,6 +18,11 @@ html {
 }
 body {
   margin: 0;
+  background-image: url("header1.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  /*background-position: right top;*/
+  background-attachment: fixed;
 }
 article,
 aside,
@@ -2633,7 +2638,6 @@ input[type="search"] {
 }
 .form-group {
   margin-bottom: 15px;
-  /*margin-top: 50px;*/
 }
 .radio,
 .checkbox {

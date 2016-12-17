@@ -226,6 +226,11 @@
     </Content>
     <Content Include="bin\SiteSearchASP.NET.dll" />
     <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\header.jpg" />
+    <Content Include="Content\header1.png" />
+    <Content Include="Content\header2.jpg" />
+    <Content Include="Content\header3.jpg" />
+    <Content Include="Content\header4.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
