@@ -38,16 +38,22 @@
             </div>
         </div>
     </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <footer class="pull-right">
-            <p>&copy; @DateTime.Now.Year - uBit Team Blog</p>
-        </footer>
-    </div>
+</div>
+<div class="container body-content">
+    
+    @RenderBody()
 
+    <footer class="pull-right">
+        <p>&copy; @DateTime.Now.Year - uBit Team Blog</p>
+        <iframe src="http://free.timeanddate.com/clock/i5i8znef/n238/tlbg/fcfff/tc000/pct/ftbi/bacfff/tt0/tw0/tm1/ts1/tb4" frameborder="0" width="88" height="36" allowTransparency="true"></iframe>
+      
+    </footer>
+</div>
+    <!-----------COMENTS-->
+  <div align="center"><script align="center" type="text/javascript" src="http://100widgets.com/js_data.php?id=234"></script></div>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
 </body>
 </html>
