@@ -28,12 +28,16 @@
             <!--име търсене регистрация влизане-->
             @Html.ActionLink("HOME", "Index", "Home", new {area = ""}, new {@class = "navbar-brand"})
 
-            <div class="nav navbar-right" style="margin-top: 17px">
+            <div class="nav navbar-right" style="margin-top: 14px">
                 <form action="~/search.aspx" method="GET">
                     <input type="text" name="SearchTerm"/>
                     <input type="submit" value="Search"/>
                     <Search:ExpressIntegrator runat=server/>
                 </form>
+            </div>
+
+            <div class="nav navbar-right">
+                @Html.ActionLink("Contact us", "Contact", "Home", new {area = ""}, new {@class = "navbar-brand" })
             </div>
 
         </div>

@@ -9,6 +9,9 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Net.Mail;
+using System.ComponentModel.DataAnnotations;
+using System.Text;
 
 namespace Blog.Controllers
 {
@@ -49,6 +52,60 @@ namespace Blog.Controllers
 
                 return View(articles);
             }
+        }
+
+        //Get Home/Contact
+        public ActionResult Contact()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+
+        //Post Home/Contact
+        [HttpPost]
+        public ActionResult Contact(ContactModels c)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    MailMessage msg = new MailMessage();
+                    SmtpClient smtp = new SmtpClient();
+                    MailAddress from = new MailAddress(c.Email.ToString());
+                    StringBuilder sb = new StringBuilder();
+                    SmtpClient client = new SmtpClient();
+
+                    client.Host = "smtp.gmail.com";
+                    client.Port = 587;
+                    client.EnableSsl = true;
+                    client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                    client.Credentials = new NetworkCredential("dimitur.gaberov@gmail.com", "G284651259g");
+
+                    msg.IsBodyHtml = false;
+                    //smtp.Host = "abv.bg";
+                    //smtp.Port = 25;
+                    //msg.To.Add("godsmack_91@abv.bg");
+                    msg.From = from;
+                    msg.Subject = "Contact Us";
+                    sb.Append("First name: " + c.FirstName);
+                    sb.Append(Environment.NewLine);
+                    sb.Append("Last name: " + c.LastName);
+                    sb.Append(Environment.NewLine);
+                    sb.Append("Email: " + c.Email);
+                    sb.Append(Environment.NewLine);
+                    sb.Append("Comments: " + c.Comment);
+                    msg.Body = sb.ToString();
+                    client.Send(msg);
+                    msg.Dispose();
+                    return View("Success");
+                }
+                catch (Exception)
+                {
+                    return View("Error");
+                }
+            }
+            return View();
         }
 
         // Display the image on user home and in menu bar. 
