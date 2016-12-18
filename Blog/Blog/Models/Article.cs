@@ -23,6 +23,7 @@ namespace Blog.Models
             this.Content = content;
             this.CategoryId = categoryId;
             this.tags = new HashSet<Tag>();
+            this.comments = new HashSet<Comment>();
         }
 
         [Key]
@@ -53,6 +54,14 @@ namespace Blog.Models
         {
             get { return this.tags; }
             set { this.tags = value; }
+        }
+
+        private ICollection<Comment> comments;
+
+        public virtual ICollection<Comment> Comments
+        {
+            get { return this.comments; }
+            set { this.comments = value; }
         }
     }
 }
