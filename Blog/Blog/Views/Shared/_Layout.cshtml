@@ -13,31 +13,35 @@
 
 </head>
 <body>
-    <div class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <!--име търсене регистрация влизане-->
-                @Html.ActionLink("HOME", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+    <div align="right"> <button type="button">Click Me!</button></div>
+<div class="navbar navbar-default navbar-fixed-top">
+   
+    <div class="container">
+        <div class="navbar-header">
+      
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
 
-                <div class="nav navbar-right" style="margin-top: 17px">
-                    <form action="~/search.aspx" method="GET">
-                        <input type="text" name="SearchTerm" />
-                        <input type="submit" value="Search" />
-                        <Search:ExpressIntegrator runat=server />
-                    </form>
-                </div>
+            <!--име търсене регистрация влизане-->
+            @Html.ActionLink("HOME", "Index", "Home", new {area = ""}, new {@class = "navbar-brand"})
 
+            <div class="nav navbar-right" style="margin-top: 17px">
+                <form action="~/search.aspx" method="GET">
+                    <input type="text" name="SearchTerm"/>
+                    <input type="submit" value="Search"/>
+                    <Search:ExpressIntegrator runat=server/>
+                </form>
             </div>
-            <div class="navbar-collapse collapse">
-                @Html.Partial("_LoginPartial")
-            </div>
+
+        </div>
+        <div class="navbar-collapse collapse">
+            @Html.Partial("_LoginPartial")
         </div>
     </div>
+</div>
 </div>
 <div class="container body-content" style="margin: 50px">
     
@@ -45,11 +49,16 @@
 
     <footer class="pull-right">
         <p>&copy; @DateTime.Now.Year - uBit Team Blog</p>
-        <iframe src="http://free.timeanddate.com/clock/i5i8znef/n238/tlbg/fcfff/tc000/pct/ftbi/bacfff/tt0/tw0/tm1/ts1/tb4" frameborder="0" width="88" height="36" allowTransparency="true"></iframe>
+        <iframe src="http://free.timeanddate.com/clock/i5ib9hei/n238/tlbg11/tc888/pc888/bo2/tt0/tw1/tm1/td1/th1/tb4" frameborder="0" width="130" height="36"></iframe>
+
+
+
         <script type="text/javascript" src="http://100widgets.com/js_data.php?id=168"></script>
     </footer>
+    <!-----SOCIAL NETWORKS TAG-->
+    <script type="text/javascript" src="http://100widgets.com/js_data.php?id=255"></script>
 </div>
-    <!-----------COMENTS-->
+   
   
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
