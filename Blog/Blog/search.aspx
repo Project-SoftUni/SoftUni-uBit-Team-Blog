@@ -1,19 +1,24 @@
 <%@ Page language="C#" %>
 <%@ Register Tagprefix="Search" Namespace="SiteSearchASP.NET.Interface" assembly="SiteSearchASP.NET" %>
 <%@ Import namespace="SiteSearchASP.NET.Interface" %>
+    <%--<link rel="stylesheet" type="text/css" href="searchCss.css" />--%>
 <html>
-<head>
 
+<head>
+    <script src="Scripts/bootstrap.js" type="text/javascript"></script>
+    <script src="Scripts/bootstrap.min.js" type="text/javascript"></script>
+    <link href="Content/bootstrap.css" rel="stylesheet" type="text/css" />
  <style type="text/css">
  <!--
-  body {  font-family:Arial; font-size: 20px; color: #333333; margin-left: 200px}
-  td {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 20px; color: #333333}
-  a {  color: #3399CC}
+  body { margin-left: 200px
+  }
+  td { font-size: 20px;}
  -->
  </style>
 
 </head>
 <body bgcolor="#c6efff" text="#000000">
+
 
 <form id="Form1" runat="server">
 
