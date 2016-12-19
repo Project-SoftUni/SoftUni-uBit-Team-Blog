@@ -305,6 +305,7 @@
     <Content Include="Views\Comment\Create.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Success.cshtml" />
+    <Content Include="Views\Manage\UploadPhoto.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="SiteSearchASP.NET\" />

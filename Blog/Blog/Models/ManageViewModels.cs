@@ -12,6 +12,12 @@ namespace Blog.Models
         public string PhoneNumber { get; set; }
         public bool TwoFactor { get; set; }
         public bool BrowserRemembered { get; set; }
+
+        //Adding a byte[] for saving the user profile pic.
+        public byte[] UserPhoto { get; set; }
+
+        public string FullName { get; set; }
+        public string Email { get; set; }
     }
 
     public class ManageLoginsViewModel

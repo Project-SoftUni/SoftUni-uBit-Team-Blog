@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Blog.Models;
+using System.IO;
 
 namespace Blog.Controllers
 {
@@ -32,9 +33,9 @@ namespace Blog.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -71,8 +72,41 @@ namespace Blog.Controllers
                 TwoFactor = await UserManager.GetTwoFactorEnabledAsync(userId),
                 Logins = await UserManager.GetLoginsAsync(userId),
                 BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId)
+
             };
             return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult UploadPhoto(string id)
+        {
+            //save the uploaded image to the byte array and use this byte array result to be saved in our users table.
+            byte[] imageData = null;
+            if (Request.Files.Count > 0)
+            {
+                HttpPostedFileBase poImgFile = Request.Files["User Photo"];
+
+                using (var binary = new BinaryReader(poImgFile.InputStream))
+                {
+                    imageData = binary.ReadBytes(poImgFile.ContentLength);
+                }
+            }
+            //Get the current logged in user
+            using (var database = new BlogDbContext())
+            {
+                var user = database
+                        .Users
+                        .Where(u => u.UserName == this.User.Identity.Name)
+                        .First();
+
+                //Assignt the image to the database column UserPhoto and save changes.
+                user.UserPhoto = imageData;
+
+                database.SaveChanges();
+
+                return View();
+            }
+
         }
 
         //
@@ -333,7 +367,7 @@ namespace Blog.Controllers
             base.Dispose(disposing);
         }
 
-#region Helpers
+        #region Helpers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
 
@@ -344,6 +378,8 @@ namespace Blog.Controllers
                 return HttpContext.GetOwinContext().Authentication;
             }
         }
+
+        public object WebSecurity { get; private set; }
 
         private void AddErrors(IdentityResult result)
         {
@@ -384,6 +420,6 @@ namespace Blog.Controllers
             Error
         }
 
-#endregion
+        #endregion
     }
 }
