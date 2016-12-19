@@ -35,8 +35,9 @@
             <h3>Comments</h3>
             @foreach (var comment in Model.Comments)
             {
+                var userName = System.Web.HttpContext.Current.User.Identity.Name;
                 <p>@comment.Content</p>
-                <p style="font-style: italic;">from @comment.Author.FullName</p>
+                <p style="font-style: italic;">from @userName</p>
             }
 
             <h3>Post a Comment</h3>
