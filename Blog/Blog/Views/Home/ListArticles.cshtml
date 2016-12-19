@@ -20,13 +20,14 @@
                     </p>
                     <footer>
                         <div class="pull-left">
-                            @foreach (var tag in article.Tags)
-                            {
-                                <span>@Html.ActionLink(tag.Name, "List", "Tag", new { @id = tag.Id }, new { @class = "btn btn-default btn-xs" })</span>
-                            }
+                            <div class="glyphicon glyphicon-tag"> </div>
+                                @foreach (var tag in article.Tags)
+                                {
+                                     <span>@Html.ActionLink(tag.Name, "List", "Tag", new { @id = tag.Id }, new { @class = "btn btn-default btn-xs" })</span>
+                                }  
                         </div>
-                        <small class="author pull-right">
-                            --author @article.Author.FullName
+                        <small class="author pull-right glyphicon glyphicon-user">
+                            @article.Author.FullName
                         </small>
                     </footer>
                 </article>
