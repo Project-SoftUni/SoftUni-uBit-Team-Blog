@@ -9,5 +9,6 @@ namespace Blog
         {
             filters.Add(new HandleErrorAttribute());
         }
+
     }
 }
