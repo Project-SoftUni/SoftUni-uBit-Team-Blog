@@ -9,7 +9,6 @@ namespace Blog.Models
     public class ContactModels
     {
         [Required]
-        [StringLength(20, MinimumLength = 3)]
         public string Name { get; set; }
         [Required]
         [EmailAddress]

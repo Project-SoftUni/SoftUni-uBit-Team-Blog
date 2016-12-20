@@ -63,39 +63,44 @@ namespace Blog.Controllers
         }
 
         [HttpPost]
-        public ActionResult Contact(ContactModels vm)
+        public ActionResult Contact(string Name, string Email, string Subject, string Message)
         {
-            if (ModelState.IsValid)
+            try
             {
-                try
-                {
-                    MailMessage msz = new MailMessage();
-                    msz.From = new MailAddress(vm.Email, vm.Name);//Email and name which are available 
-                                                                    //from contact us page 
-                    msz.To.Add("dimityr.gaberov@gmail.com");//Where mail will be sent 
-                    msz.Subject = vm.Subject;
-                    msz.Body = vm.Message;
-                    SmtpClient smtp = new SmtpClient();
+                MailMessage msg = new MailMessage();
+                msg.To.Add(Email);
+                msg.From = new MailAddress("e-mail"); //Email to recieve messages.
+                msg.Subject = Subject;
 
-                    smtp.Host = "smtp.gmail.com";
+                string userMessage = "";
+                userMessage = "<br/>Name :" + Name;
+                userMessage = userMessage + "<br/>Email: " + Email;
+                userMessage = userMessage + "<br/>Subject: " + Subject;
+                userMessage = userMessage + "<br/>Message: " + Message;
+                string Body = userMessage;
 
-                    smtp.Port = 587;
+                msg.Body = Body;
+                msg.IsBodyHtml = true;
 
-                    smtp.Credentials = new NetworkCredential
-                    ("dimityr.gaberov@gmail.com", "284651259");
+                SmtpClient smtp = new SmtpClient();
 
-                    smtp.EnableSsl = true;
+                smtp.Host = "smtp.gmail.com";
 
-                    smtp.Send(msz);
+                smtp.Port = 587;
 
-                    ModelState.Clear();
-                    return View("Success");
-                }
-                catch (Exception ex)
-                {
-                    ModelState.Clear();
-                    return View("Error");
-                }
+                smtp.Credentials = new NetworkCredential
+                ("e-mail", "password"); // Email and password.
+
+                smtp.EnableSsl = true;
+
+                smtp.Send(msg);
+
+                ModelState.Clear();
+                return View("Success");
+            }
+            catch (Exception)
+            {
+                return View("Error");
             }
 
             return View();
