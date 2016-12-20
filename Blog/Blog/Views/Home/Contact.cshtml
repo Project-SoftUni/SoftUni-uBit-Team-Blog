@@ -4,49 +4,61 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <h2>Contact us</h2>
-<div class="container">
-    <div class="well">
-        @using (Html.BeginForm(new { @class = "form-horizontal" }))
-        {
-            @Html.ValidationSummary(true)
-            <div class="row">
-                @Html.LabelFor(m => m.FirstName, new { @class = "col-sm-4 control-label" })
-                <div class="col-sm-4">
-                    @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(m => m.FirstName)
+<div>
+    <div class="col-md-6">
+        <div>
+            @*@if (ViewBag.Message == null)*@
+            
+                <div>
+                    <form method="post">
+                        <div class="form-group">
+                            <label asp-for="Name">Name</label>
+                            <input asp-for="Name" class="form-control" />
+                            <span asp-validation-for="Name"
+                                  class="text-muted"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Email">Email</label>
+                            <input asp-for="Email" class="form-control" />
+                            <span asp-validation-for="Email"
+                                  class="text-muted"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Subject">Subject</label>
+                            <input asp-for="Subject" class="form-control" />
+                            <span asp-validation-for="Subject"
+                                  class="text-muted"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Message">Message</label>
+                            <textarea rows="5" cols="15"
+                                      asp-for="Message" class="form-control"></textarea>
+                            <span asp-validation-for="Message"
+                                  class="text-muted"></span>
+                        </div>
+                        <div>
+                            <button type="submit"
+                                    class="btn btn-success">
+                                Send
+                            </button>
+                        </div>
+
+                    </form>
                 </div>
+            
+        </div>
+
+        <div>
+            <div>
+                @*@if (ViewBag.Message != null)
+            {
+                    <div>@ViewBag.Message</div>
+
+
+                }*@
             </div>
-            @Html.ValidationSummary(true)
-            <div class="row">
-                @Html.LabelFor(m => m.LastName, new { @class = "col-sm-4 control-label" }) <br />
-                <div class="col-sm-4">
-                    @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(m => m.LastName)
-                </div>
-            </div>
-            @Html.ValidationSummary(true)
-            <div class="row">
-                @Html.LabelFor(m => m.Email, new { @class = "col-sm-4 control-label" }) <br />
-                <div class="col-sm-4">
-                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(m => m.Email)
-                </div>
-            </div>
-            @Html.ValidationSummary(true)
-            <div class="row">
-                @Html.LabelFor(m => m.Comment, new { @class = "col-sm-4 control-label" }) <br />
-                <div class="col-sm-4">
-                    @Html.TextAreaFor(m => m.Comment, new { @class = "form-control", @rows = "6" })
-                    @Html.ValidationMessageFor(m => m.Comment)
-                </div>
-            </div>
-            <div style="margin-top: 20px">
-                <div style="margin-left: 490px">
-                    <input type="submit" value="Submit" />
-                    <input type="reset" value="Reset" />
-                </div>
-            </div>
-        }
+        </div>
     </div>
+
 </div>
 

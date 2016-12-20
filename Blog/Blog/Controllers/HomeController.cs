@@ -62,51 +62,45 @@ namespace Blog.Controllers
             return View();
         }
 
-        //Post Home/Contact
         [HttpPost]
-        public ActionResult Contact(ContactModels c)
+        public ActionResult Contact(ContactModels vm)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    MailMessage msg = new MailMessage();
+                    MailMessage msz = new MailMessage();
+                    msz.From = new MailAddress(vm.Email, vm.Name);//Email and name which are available 
+                                                                    //from contact us page 
+                    msz.To.Add("dimityr.gaberov@gmail.com");//Where mail will be sent 
+                    msz.Subject = vm.Subject;
+                    msz.Body = vm.Message;
                     SmtpClient smtp = new SmtpClient();
-                    MailAddress from = new MailAddress(c.Email.ToString());
-                    StringBuilder sb = new StringBuilder();
-                    SmtpClient client = new SmtpClient();
 
-                    client.Host = "smtp.gmail.com";
-                    client.Port = 587;
-                    client.EnableSsl = true;
-                    client.DeliveryMethod = SmtpDeliveryMethod.Network;
-                    client.Credentials = new NetworkCredential("dimitur.gaberov@gmail.com", "G284651259g");
+                    smtp.Host = "smtp.gmail.com";
 
-                    msg.IsBodyHtml = false;
-                    //smtp.Host = "abv.bg";
-                    //smtp.Port = 25;
-                    //msg.To.Add("godsmack_91@abv.bg");
-                    msg.From = from;
-                    msg.Subject = "Contact Us";
-                    sb.Append("First name: " + c.FirstName);
-                    sb.Append(Environment.NewLine);
-                    sb.Append("Last name: " + c.LastName);
-                    sb.Append(Environment.NewLine);
-                    sb.Append("Email: " + c.Email);
-                    sb.Append(Environment.NewLine);
-                    sb.Append("Comments: " + c.Comment);
-                    msg.Body = sb.ToString();
-                    client.Send(msg);
-                    msg.Dispose();
+                    smtp.Port = 587;
+
+                    smtp.Credentials = new NetworkCredential
+                    ("dimityr.gaberov@gmail.com", "284651259");
+
+                    smtp.EnableSsl = true;
+
+                    smtp.Send(msz);
+
+                    ModelState.Clear();
                     return View("Success");
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
+                    ModelState.Clear();
                     return View("Error");
                 }
             }
+
             return View();
         }
+
 
         // Display the image on user home and in menu bar. 
         public FileContentResult UserPhotos()
